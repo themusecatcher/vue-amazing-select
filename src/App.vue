@@ -38,27 +38,19 @@ export default {
           value: 4
         },
         {
-          name: '北京市',
+          name: '旧金山',
           value: 5
         },
         {
-          name: '上海市',
+          name: '悉尼市',
           value: 6
         },
         {
-          name: '郑州市',
+          name: '伦敦市',
           value: 7
         },
         {
-          name: '纽约市',
-          value: 8
-        },
-        {
-          name: '郑州市',
-          value: 7
-        },
-        {
-          name: '纽约市',
+          name: '巴黎市',
           value: 8
         }
       ],
