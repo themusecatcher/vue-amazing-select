@@ -21,7 +21,7 @@
 </template>
 <script>
 export default {
-  name: 'Select',
+  name: 'VueAmazingSelect',
   props: {
     selectData: {
       type: Array,

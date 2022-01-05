@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+# 忽略目录
+src/
+packages/
+public/
+
+# 忽略指定文件
+vue.config.js
+babel.config.js
+*.map
