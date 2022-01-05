@@ -44,7 +44,3 @@ Vue.use(VueAmazingSelecter)
 | disabled | 是否禁用 | - |
 | width | 下拉框的宽度 | - |
 | num | 下拉列表最多展示的条数 | - |
-
-| 事件名 | 说明 | 参数 |
-| - | :- | :- | :-: |
-| getValue | 下拉选择某项后的回调，返回该项的key，value，索引值index | - |
