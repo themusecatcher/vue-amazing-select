@@ -1,24 +1,52 @@
 # vue-amazing-select
 
-## Project setup
+## 安装插件
+
 ```
-yarn install
+npm install vue-amazing-selecter
+或：yarn add vue-amazing-selecter
 ```
 
-### Compiles and hot-reloads for development
+## 引入并注册插件
+
 ```
-yarn serve
+import Vue from 'vue'
+import VueAmazingSelecter from 'vue-amazing-selecter'
+import 'vue-amazing-selecter/lib/selecter.css' // 引入样式
+Vue.use(VueAmazingSelecter)
 ```
 
-### Compiles and minifies for production
+## 基本用法
+
 ```
-yarn build
+<VueAmazingSelecter
+  :selectData="selectData"
+  :selValue="selValue"
+  name="name"
+  value="value"
+  placeholder="请选择城市"
+  :disabled="false"
+  :width="160"
+  :num="6"
+  @getValue="getValue"
+/>
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+## API
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+| 属性 | 说明 | 参数 |
+| - | :- | :- | :-: |
+| selectData | 下拉列表数据 | - |
+| selValue | 下拉列表默认选中 | - |
+| name | 下拉列表数据的key名称 | - |
+| value | 下拉列表数据的value名称 | - |
+| placeholder | 下拉框的placeholder | - |
+| disabled | 是否禁用 | - |
+| width | 下拉框的宽度 | - |
+| num | 下拉列表最多展示的条数 | - |
+
+| 事件名 | 说明 | 参数 |
+| - | :- | :- | :-: |
+| getValue | 下拉选择某项后的回调，返回该项的key，value，索引值index | - |
+```
