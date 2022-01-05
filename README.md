@@ -34,7 +34,6 @@ Vue.use(VueAmazingSelecter)
 
 ## API
 
-```
 | 属性 | 说明 | 参数 |
 | - | :- | :- | :-: |
 | selectData | 下拉列表数据 | - |
@@ -49,4 +48,3 @@ Vue.use(VueAmazingSelecter)
 | 事件名 | 说明 | 参数 |
 | - | :- | :- | :-: |
 | getValue | 下拉选择某项后的回调，返回该项的key，value，索引值index | - |
-```
