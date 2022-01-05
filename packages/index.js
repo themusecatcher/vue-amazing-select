@@ -1,7 +1,7 @@
-import VueAmazingSelect from './vue-amazing-select'
+import VueAmazingSelecter from './vue-amazing-selecter'
 // 存储组件列表
 const components = [
-  VueAmazingSelect
+  VueAmazingSelecter
 ]
 /* 
   定义install 方法，接收Vue作为参数，如果使用use注册插件，则所有的组件都将被注册
@@ -20,5 +20,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 export default {
   install,
-  VueAmazingSelect
+  VueAmazingSelecter
 }

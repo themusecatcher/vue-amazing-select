@@ -1,20 +1,18 @@
 {
-  "name": "vue-amazing-select",
-  "version": "0.1.0",
+  "name": "vue-amazing-selecter",
+  "version": "0.1.14",
   "private": false,
-  "main": "lib/amazingselecter.umd.min.js",
+  "main": "lib/selecter.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name amazingselecter --dest lib packages/index.js"
+    "lib": "vue-cli-service build --target lib --name selecter --dest lib packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "less": "^4.1.2",
-    "less-loader": "5.0.0",
-    "vue": "^2.6.11",
-    "vue-style-loader": "^4.1.3"
+    "less-loader": "6.0.0",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -43,5 +41,24 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` yarn install ```",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themusecatcher/vue-amazing-select.git"
+  },
+  "keywords": [
+    "vue",
+    "select",
+    "amazing"
+  ],
+  "author": "themusecatcher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/themusecatcher/vue-amazing-select/issues"
+  },
+  "homepage": "https://github.com/themusecatcher/vue-amazing-select#readme"
 }
