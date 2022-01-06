@@ -35,7 +35,7 @@ Vue.use(VueAmazingSelecter)
 ## API
 
 属性 | 说明 | 参数
--------- | ----- | -----
+|-------- | ----- | -----|
 selectData | 下拉列表数据 | -
 selValue | 下拉列表默认选中 | -
 name | 下拉列表数据的key名称 | -
