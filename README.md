@@ -16,7 +16,7 @@ import 'vue-amazing-selecter/lib/selecter.css' // 引入样式
 Vue.use(VueAmazingSelecter)
 ```
 
-## 基本用法
+## 基本用法示例
 
 ```
 <VueAmazingSelecter
@@ -32,7 +32,7 @@ Vue.use(VueAmazingSelecter)
 />
 ```
 
-## API
+## Props
 
 属性 | 说明 | 类型 | 默认值
 :--- | :--- | :--- | :---
@@ -44,6 +44,8 @@ placeholder | 下拉框的placeholder | String | 请选择
 disabled | 是否禁用 | Boolean | false
 width | 下拉框的宽度 | Number | 200
 num | 下拉列表最多展示的条数 | Number | 8
+
+## Events
 
 事件名 | 说明 | 返回值
 :--- | :--- | :---
