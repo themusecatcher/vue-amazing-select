@@ -13,7 +13,7 @@
       v-model="selectName" />
     <div :class="['triangle-down', { 'rotate': rotate, 'disabled': disabled }]" @click="openSelect"></div>
     <div :class="['m-options-panel', showOptions ? 'show': 'hidden']" :style="`max-height: ${ num * 40 }px; width: ${width - 2}px;`">
-      <p class="u-option" :title="item[name]" @mousedown="getValue(item[name], item[value], index)" v-for="(item, index) in selectData" :key="index">
+      <p class="u-option" :title="item[name]" @mousedown="getSelectedData(item[name], item[value], index)" v-for="(item, index) in selectData" :key="index">
         {{ item[name] }}
       </p>
     </div>
@@ -54,7 +54,7 @@ export default {
     },
     value: { // 下载字典项的value值
       type: String,
-      default: 'name'
+      default: 'value'
     }
   },
   computed: {
@@ -88,9 +88,9 @@ export default {
       this.showOptions = !this.showOptions
       this.rotate = !this.rotate
     },
-    getValue (key, value, index) {
+    getSelectedData (key, value, index) {
       this.selectValue = value
-      this.$emit('getValue', key, value, index)
+      this.$emit('getSelectedData', key, value, index)
     },
     onBlur () {
       this.showOptions = false
