@@ -38,8 +38,8 @@ Vue.use(VueAmazingSelecter)
 :--- | :--- | :--- | :---
 selectData | 下拉列表数据 | Array | []
 selValue | 下拉列表默认选中 | String/Number | undefined
-name | 下拉列表数据的key名称 | String | name
-value | 下拉列表数据的value名称 | String | value
+name | 下拉列表每项的key名称 | String | name
+value | 下拉列表每项的value名称 | String | value
 placeholder | 下拉框的placeholder | String | 请选择
 disabled | 是否禁用 | Boolean | false
 width | 下拉框的宽度 | Number | 200
