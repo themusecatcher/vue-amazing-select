@@ -1,13 +1,13 @@
-# vue-amazing-select
+## vue-amazing-select
 
-## 安装插件
+### 安装插件
 
 ```
 npm install vue-amazing-selecter
 或：yarn add vue-amazing-selecter
 ```
 
-## 引入并注册插件
+### 引入并注册插件
 
 ```
 import Vue from 'vue'
@@ -16,7 +16,7 @@ import 'vue-amazing-selecter/lib/selecter.css' // 引入样式
 Vue.use(VueAmazingSelecter)
 ```
 
-## 基本用法示例
+### 基本用法示例
 
 ```
 <VueAmazingSelecter
@@ -32,7 +32,7 @@ Vue.use(VueAmazingSelecter)
 />
 ```
 
-## Props
+### Props
 
 属性 | 说明 | 类型 | 默认值
 :--- | :--- | :--- | :---
@@ -45,7 +45,7 @@ disabled | 是否禁用 | Boolean | false
 width | 下拉框的宽度 | Number | 200
 num | 下拉列表最多展示的条数 | Number | 8
 
-## Events
+### Events
 
 事件名 | 说明 | 返回值
 :--- | :--- | :---
