@@ -34,13 +34,13 @@ Vue.use(VueAmazingSelecter)
 
 ## API
 
-| 属性 | 说明 | 参数 |
-| - | :- | :- | :-: |
-| selectData | 下拉列表数据 | - |
-| selValue | 下拉列表默认选中 | - |
-| name | 下拉列表数据的key名称 | - |
-| value | 下拉列表数据的value名称 | - |
-| placeholder | 下拉框的placeholder | - |
-| disabled | 是否禁用 | - |
-| width | 下拉框的宽度 | - |
-| num | 下拉列表最多展示的条数 | - |
+属性 | 说明 | 参数
+-------- | ----- | -----
+selectData | 下拉列表数据 | -
+selValue | 下拉列表默认选中 | -
+name | 下拉列表数据的key名称 | -
+value | 下拉列表数据的value名称 | -
+placeholder | 下拉框的placeholder | -
+disabled | 是否禁用 | -
+width | 下拉框的宽度 | -
+num | 下拉列表最多展示的条数 | -
