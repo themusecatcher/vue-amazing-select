@@ -54,12 +54,16 @@ export default {
           value: 8
         }
       ],
-      selValue: ''
     }
   },
   created () {
     // 初始化下拉框
     this.selValue = this.selectData[0].value
+  },
+  watch: {
+    val (to, from) {
+      console.log(from + '=>' + to)
+    }
   },
   methods: {
     getValue (name, value, index) {

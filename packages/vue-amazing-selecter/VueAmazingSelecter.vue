@@ -10,10 +10,10 @@
       :title="selectName"
       @click="openSelect"
       @blur="onBlur"
-      v-model="selectName" />
+      :value="selectName" />
     <div :class="['triangle-down', { 'rotate': rotate, 'disabled': disabled }]" @click="openSelect"></div>
     <div :class="['m-options-panel', showOptions ? 'show': 'hidden']" :style="`max-height: ${ num * 40 }px; width: ${width - 2}px;`">
-      <p class="u-option" :title="item[name]" @mousedown="getSelectedData(item[name], item[value], index)" v-for="(item, index) in selectData" :key="index">
+      <p class="u-option" :title="item[name]" @mousedown="getValue(item[name], item[value], index)" v-for="(item, index) in selectData" :key="index">
         {{ item[name] }}
       </p>
     </div>
@@ -52,9 +52,13 @@ export default {
       type: String,
       default: 'name'
     },
-    value: { // 下载字典项的value值
+    value: { // 下拉字典项的value值
       type: String,
       default: 'value'
+    },
+    checked: {
+      type: Number,
+      default: 1
     }
   },
   computed: {
@@ -88,9 +92,9 @@ export default {
       this.showOptions = !this.showOptions
       this.rotate = !this.rotate
     },
-    getSelectedData (key, value, index) {
+    getValue (key, value, index) {
       this.selectValue = value
-      this.$emit('getSelectedData', key, value, index)
+      this.$emit('getValue', key, value, index)
     },
     onBlur () {
       this.showOptions = false

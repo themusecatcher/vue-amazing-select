@@ -49,4 +49,4 @@ num | 下拉列表最多展示的条数 | Number | 8
 
 事件名 | 说明 | 返回值
 :--- | :--- | :---
-getSelectedData | 选择某项下拉后的回调函数 | name, value, index（key值，value值，索引值）
+getValue | 选择某项下拉后的回调函数 | name, value, index（key值，value值，索引值）
