@@ -55,6 +55,7 @@ export default {
           value: 8
         }
       ],
+      selectedValue: ''
     }
   },
   created () {
