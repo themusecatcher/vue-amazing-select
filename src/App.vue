@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="m-area">
-      <VueAmazingSelecter
+      <VueAmazingSelector
         :selectData="selectData"
         :selValue="selValue"
         name="name"

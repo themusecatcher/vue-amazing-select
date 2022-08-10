@@ -3,23 +3,23 @@
 ### 安装插件
 
 ```
-npm install vue-amazing-selecter
-或：yarn add vue-amazing-selecter
+npm install vue-amazing-selector
+或：yarn add vue-amazing-selector
 ```
 
 ### 引入并注册插件
 
 ```
 import Vue from 'vue'
-import VueAmazingSelecter from 'vue-amazing-selecter'
-import 'vue-amazing-selecter/lib/selecter.css' // 引入样式
-Vue.use(VueAmazingSelecter)
+import VueAmazingSelector from 'vue-amazing-selector'
+import 'vue-amazing-selector/lib/selector.css' // 引入样式
+Vue.use(VueAmazingSelector)
 ```
 
 ### 基本用法示例
 
 ```
-<VueAmazingSelecter
+<VueAmazingSelector
   :selectData="selectData"
   :selValue="selValue"
   name="name"

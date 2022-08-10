@@ -1,13 +1,13 @@
 {
-  "name": "vue-amazing-selecter",
+  "name": "vue-amazing-selector",
   "version": "0.1.18",
   "private": false,
-  "main": "lib/selecter.umd.min.js",
+  "main": "lib/selector.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name selecter --dest lib packages/index.js"
+    "lib": "vue-cli-service build --target lib --name selector --dest lib packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
