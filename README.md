@@ -1,6 +1,6 @@
-## vue-amazing-select
+# vue-amazing-selector
 
-### 安装插件
+## 安装插件
 
 ```
 npm install vue-amazing-selector
