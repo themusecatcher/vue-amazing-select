@@ -21,12 +21,13 @@ Vue.use(VueAmazingSelector)
 ```
 <VueAmazingSelector
   :selectData="selectData"
-  :selValue="selValue"
+  :selectedValue="selectedValue"
   name="name"
   value="value"
   placeholder="请选择城市"
   :disabled="false"
   :width="160"
+  :height="36"
   :num="6"
   @getValue="getValue"
 />
@@ -37,13 +38,14 @@ Vue.use(VueAmazingSelector)
 属性 | 说明 | 类型 | 默认值
 :--- | :--- | :--- | :---
 selectData | 下拉列表数据 | Array | []
-selValue | 下拉列表默认选中 | String/Number | undefined
-name | 下拉列表每项的key名称 | String | name
+selectedValue | 下拉初始默认值 | String/Number | ''
+name | 下拉列表每项的name名称 | String | name
 value | 下拉列表每项的value名称 | String | value
-placeholder | 下拉框的placeholder | String | 请选择
+placeholder | 下拉框默认文字 | String | 请选择
 disabled | 是否禁用 | Boolean | false
 width | 下拉框的宽度 | Number | 200
-num | 下拉列表最多展示的条数 | Number | 8
+height | 下拉框的高度 | Number | 36
+num | 下拉列表最多展示的条数 | Number | 6
 
 ## Events
 
