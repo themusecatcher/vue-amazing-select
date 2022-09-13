@@ -107,12 +107,8 @@ export default {
   watch: {
     selectedValue (to) {
       this.hoverValue = to
-      for (let item of this.selectData) {
-        if (item[this.value] === to) {
-          this.selectedName = item[this.name]
-          break
-        }
-      }
+      const target = this.selectData.find(item => item[this.value] === to)
+      this.selectedName = target ? target[this.name] : ''
     }
   },
   mounted () {
