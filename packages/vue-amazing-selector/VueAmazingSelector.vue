@@ -70,8 +70,7 @@ export default {
     num: { // 下拉面板最多能展示的下拉项数，超过滚后动显示
       type: Number,
       default: 6
-    },
-   
+    }
   },
   data () {
     return {
@@ -87,6 +86,10 @@ export default {
       if (!e.path.includes(el) && this.showOptions) {
         this.showOptions = false
       }
+      // 自动清理自己，避免内存泄漏
+      this.$once('hook:beforeDestroy', function () {
+        removeEventListener('mousedown', this.blur)
+      })
     },
     onEnter (value) {
       this.hoverValue = value
@@ -101,7 +104,7 @@ export default {
       this.$emit('getValue', name, value, index)
     }
   },
-  created () {
+  mounted () {
     for (let item of this.selectData) {
       if (item[this.value] === this.selectedValue) {
         this.selectedName = item[this.name]
@@ -109,9 +112,6 @@ export default {
       }
     }
     addEventListener('mousedown', this.blur) // 添加blur监听事件
-  },
-  beforeDestroy () {
-    removeEventListener('mousedown', this.blur)
   }
 }
 </script>
