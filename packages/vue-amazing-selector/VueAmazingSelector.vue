@@ -75,7 +75,7 @@ export default {
   data () {
     return {
       selectedName: '',
-      hoverValue: this.selectedValue, // 鼠标悬浮项的value值
+      hoverValue: '', // 鼠标悬浮项的value值
       showOptions: false
     }
   },
@@ -104,13 +104,18 @@ export default {
       this.$emit('getValue', name, value, index)
     }
   },
-  mounted () {
-    for (let item of this.selectData) {
-      if (item[this.value] === this.selectedValue) {
-        this.selectedName = item[this.name]
-        break
+  watch: {
+    selectedValue (to) {
+      this.hoverValue = to
+      for (let item of this.selectData) {
+        if (item[this.value] === to) {
+          this.selectedName = item[this.name]
+          break
+        }
       }
     }
+  },
+  mounted () {
     addEventListener('mousedown', this.blur) // 添加blur监听事件
   }
 }
