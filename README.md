@@ -29,7 +29,7 @@ Vue.use(VueAmazingSelector)
   :width="160"
   :height="36"
   :num="6"
-  @getValue="getValue"
+  @change="onChange"
 />
 ```
 
@@ -51,4 +51,4 @@ num | 下拉列表最多展示的条数 | Number | 6
 
 事件名 | 说明 | 返回值
 :--- | :--- | :---
-getValue | 选择某项下拉后的回调函数 | name, value, index（key值，value值，索引值）
+change | 选择某项下拉后的回调函数 | name, value, index（key值，value值，索引值）

@@ -11,7 +11,7 @@
         :width="160"
         :height="36"
         :num="6"
-        @getValue="getValue" />
+        @change="onChange" />
     </div>
   </div>
 </template>
@@ -61,7 +61,6 @@ export default {
   created () {
     // 初始化下拉框
     this.selectedValue = 1
-    // this.selectedValue = ''
   },
   watch: {
     val (to, from) {
@@ -69,7 +68,7 @@ export default {
     }
   },
   methods: {
-    getValue (name, value, index) {
+    onChange (name, value, index) {
       console.log('item:', name, value, index)
     }
   }

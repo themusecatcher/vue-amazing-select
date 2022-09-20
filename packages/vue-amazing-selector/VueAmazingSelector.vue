@@ -1,8 +1,10 @@
 <template>
-  <div class="vue-amazing-selector" id="vue-amazing-selector" :style="`height: ${height}px;`">
+  <div class="vue-amazing-selector" :style="`height: ${height}px;`">
     <div
-      :class="['m-select-wrap', { 'hover': !disabled, 'focus': showOptions, 'disabled': disabled }]"
+      :class="['m-select-wrap', { 'hover focus': !disabled, 'disabled': disabled }]"
       :style="`width: ${width - 2}px; height: ${height - 2}px;`"
+      tabindex="0"
+      @blur="onBlur"
       @click="disabled ? e => e.preventDefault() : openSelect()">
       <div
         :class="['u-select-input', { 'placeholder': !selectedName }]"
@@ -20,7 +22,7 @@
           :class="['u-option', {'option-selected': item[name]===selectedName, 'option-hover': !item.disabled&&item[value]===hoverValue, 'option-disabled': item.disabled }]"
           :title="item[name]"
           @mouseenter="onEnter(item[value])"
-          @click="item.disabled ? e => e.preventDefault() : getValue(item[name], item[value], index)"
+          @click="item.disabled ? e => e.preventDefault() : onChange(item[name], item[value], index)"
           v-for="(item, index) in selectData" :key="index"
         >
           {{ item[name] }}
@@ -33,7 +35,7 @@
 export default {
   name: 'VueAmazingSelector',
   props: {
-    selectData: {
+    selectData: { // 下拉框字典数据
       type: Array,
       default: () => {
         return []
@@ -41,13 +43,13 @@ export default {
     },
     selectedValue: { // 下拉初始默认值
       type: [Number, String],
-      default: ''
+      default: null
     },
-    name: { // 下拉字典项的name值
+    name: { // 下拉字典项的文本
       type: String,
       default: 'name'
     },
-    value: { // 下拉字典项的value值
+    value: { // 下拉字典项的值
       type: String,
       default: 'value'
     },
@@ -67,29 +69,30 @@ export default {
       type: Number,
       default: 36
     },
-    num: { // 下拉面板最多能展示的下拉项数，超过滚后动显示
+    num: { // 下拉面板最多能展示的下拉项数，超过后滚动显示
       type: Number,
       default: 6
     }
   },
   data () {
     return {
-      selectedName: '',
-      hoverValue: '', // 鼠标悬浮项的value值
+      selectedName: null,
+      hoverValue: null, // 鼠标悬浮项的value值
       showOptions: false
     }
   },
+  watch: {
+    selectedValue (to) {
+      this.hoverValue = to
+      const target = this.selectData.find(item => item[this.value] === to)
+      this.selectedName = target ? target[this.name] : null
+    }
+  },
   methods: {
-    blur (e) {
-      let el = document.getElementById('vue-amazing-selector')
-      // 当点击事件的e.path不包括目标指定元素时，并且下拉面板为展开状态
-      if (!e.path.includes(el) && this.showOptions) {
+    onBlur () {
+      if (this.showOptions) {
         this.showOptions = false
       }
-      // 自动清理自己，避免内存泄漏
-      this.$once('hook:beforeDestroy', function () {
-        removeEventListener('mousedown', this.blur)
-      })
     },
     onEnter (value) {
       this.hoverValue = value
@@ -97,22 +100,12 @@ export default {
     openSelect () {
       this.showOptions = !this.showOptions
     },
-    getValue (name, value, index) { // 选中下拉项后的回调
+    onChange (name, value, index) { // 选中下拉项后的回调
       this.selectedName = name
       this.hoverValue = value
       this.showOptions = false
-      this.$emit('getValue', name, value, index)
+      this.$emit('change', name, value, index)
     }
-  },
-  watch: {
-    selectedValue (to) {
-      this.hoverValue = to
-      const target = this.selectData.find(item => item[this.value] === to)
-      this.selectedName = target ? target[this.name] : ''
-    }
-  },
-  mounted () {
-    addEventListener('mousedown', this.blur) // 添加blur监听事件
   }
 }
 </script>
@@ -181,8 +174,10 @@ input, p {
   }
 }
 .focus { // 激活时样式
-  border-color: @themeColor;
-  box-shadow: 0 0 0 2px rgba(24, 144, 255, 20%);
+  &:focus { // 需设置元素的tabindex属性
+    border-color: @themeColor;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 20%);
+  }
 }
 .disabled { // 下拉禁用样式
   color: rgba(0,0,0,.25);
