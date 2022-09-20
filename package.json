@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/themusecatcher/vue-amazing-selecter.git"
+    "url": "https://github.com/themusecatcher/vue-amazing-selector.git"
   },
   "keywords": [
     "vue",
@@ -58,7 +58,7 @@
   "author": "themusecatcher",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/themusecatcher/vue-amazing-selecter/issues"
+    "url": "https://github.com/themusecatcher/vue-amazing-selector/issues"
   },
-  "homepage": "https://github.com/themusecatcher/vue-amazing-selecter#readme"
+  "homepage": "https://github.com/themusecatcher/vue-amazing-selector#readme"
 }
