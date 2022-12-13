@@ -17,6 +17,7 @@
       <div
         v-show="showOptions"
         class="m-options-panel"
+        @mouseleave="onLeave"
         :style="`top: ${height + 6}px; line-height: ${height - 12}px; max-height: ${ num * (height - 2) }px; width: ${width}px;`">
         <p
           :class="['u-option', {'option-selected': item[name]===selectedName, 'option-hover': !item.disabled&&item[value]===hoverValue, 'option-disabled': item.disabled }]"
@@ -34,6 +35,10 @@
 <script>
 export default {
   name: 'VueAmazingSelector',
+  model: {
+    prop: 'selectedValue',
+    event: 'model'
+  },
   props: {
     selectData: { // 下拉框字典数据
       type: Array,
@@ -41,17 +46,21 @@ export default {
         return []
       }
     },
-    selectedValue: { // 下拉初始默认值
+    defaultValue: { // 下拉初始默认值，在未设置selectedValue（v-model）时生效
       type: [Number, String],
       default: null
     },
-    name: { // 下拉字典项的文本
+    name: { // 下拉字典项的文本字段名
       type: String,
       default: 'name'
     },
-    value: { // 下拉字典项的值
+    value: { // 下拉字典项的值字段名
       type: String,
       default: 'value'
+    },
+    labelInValue: { // 是否要同时获取选中项的文本name和值value，默认只能拿到选中项的值value
+      type: Boolean,
+      default: false
     },
     placeholder: { // 下拉框默认文字
       type: String,
@@ -72,6 +81,10 @@ export default {
     num: { // 下拉面板最多能展示的下拉项数，超过后滚动显示
       type: Number,
       default: 6
+    },
+    selectedValue: { // v-model当前选中的下拉值
+      type: [Number, String, Object],
+      default: null
     }
   },
   data () {
@@ -81,11 +94,26 @@ export default {
       showOptions: false
     }
   },
-  watch: {
-    selectedValue (to) {
-      this.hoverValue = to
-      const target = this.selectData.find(item => item[this.value] === to)
+  created () {
+    if (this.selectedValue) {
+      if (this.labelInValue) {
+        this.hoverValue = this.selectedValue[this.value] || ''
+        this.selectedName = this.selectedValue[this.name] || ''
+      } else {
+        this.hoverValue = this.selectedValue || ''
+        const target = this.selectData.find(item => item[this.value] === this.selectedValue)
+        this.selectedName = target ? target[this.name] : null
+      }
+    }
+    if (!this.selectedValue && this.defaultValue) {
+      this.hoverValue = this.defaultValue
+      const target = this.selectData.find(item => item[this.value] === this.defaultValue)
       this.selectedName = target ? target[this.name] : null
+      if (this.labelInValue) {
+        this.$emit('model', target)
+      } else {
+        this.$emit('model', target[this.value])
+      }
     }
   },
   methods: {
@@ -97,13 +125,25 @@ export default {
     onEnter (value) {
       this.hoverValue = value
     },
+    onLeave () {
+      this.hoverValue = null
+    },
     openSelect () {
       this.showOptions = !this.showOptions
+      if (!this.hoverValue) {
+        const target = this.selectData.find(item => item[this.name] === this.selectedName)
+        this.hoverValue = target[this.value]
+      }
     },
     onChange (name, value, index) { // 选中下拉项后的回调
       this.selectedName = name
       this.hoverValue = value
       this.showOptions = false
+      if (this.labelInValue) {
+        this.$emit('model', { [this.name]: name, [this.value]: value })
+      } else {
+        this.$emit('model', value)
+      }
       this.$emit('change', name, value, index)
     }
   }
@@ -127,10 +167,11 @@ input, p {
 }
 // 渐变过渡效果
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .3s;
+  transition: all .5s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+  transform: translateY(-6px); // 滑动变换
 }
 .m-select-wrap {
   position: relative;

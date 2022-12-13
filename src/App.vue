@@ -3,14 +3,16 @@
     <div class="m-area">
       <VueAmazingSelector
         :selectData="selectData"
-        :selectedValue="selectedValue"
-        name="name"
+        :defaultValue="defaultValue"
+        name="label"
         value="value"
+        :labelInValue="false"
         placeholder="请选择城市"
         :disabled="false"
         :width="160"
         :height="36"
         :num="6"
+        v-model="selectedValue"
         @change="onChange" />
     </div>
   </div>
@@ -22,49 +24,46 @@ export default {
     return {
       selectData: [
         {
-          name: '北京市',
+          label: '北京市',
           value: 1
         },
         {
-          name: '上海市上海市上海市上海市',
+          label: '上海市上海市上海市上海市',
           value: 2,
           disabled: true
         },
         {
-          name: '郑州市',
+          label: '郑州市',
           value: 3
         },
         {
-          name: '纽约市纽约市纽约市纽约市',
+          label: '纽约市纽约市纽约市纽约市',
           value: 4
         },
         {
-          name: '旧金山',
+          label: '旧金山',
           value: 5
         },
         {
-          name: '悉尼市',
+          label: '悉尼市',
           value: 6
         },
         {
-          name: '伦敦市',
+          label: '伦敦市',
           value: 7
         },
         {
-          name: '巴黎市',
+          label: '巴黎市',
           value: 8
         }
       ],
-      selectedValue: ''
+      defaultValue: '',
+      selectedValue: 1
     }
   },
-  created () {
-    // 初始化下拉框
-    this.selectedValue = 1
-  },
   watch: {
-    val (to, from) {
-      console.log(from + '=>' + to)
+    selectedValue (to) {
+      console.log('selectedValue:', to)
     }
   },
   methods: {
