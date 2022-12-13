@@ -171,7 +171,7 @@ input, p {
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
-  transform: translateY(-6px); // 滑动变换
+  // transform: translateY(-6px); // 滑动变换
 }
 .m-select-wrap {
   position: relative;
