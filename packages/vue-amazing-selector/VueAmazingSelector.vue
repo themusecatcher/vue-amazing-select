@@ -130,7 +130,7 @@ export default {
     },
     openSelect () {
       this.showOptions = !this.showOptions
-      if (!this.hoverValue) {
+      if (!this.hoverValue && this.selectedName) {
         const target = this.selectData.find(item => item[this.name] === this.selectedName)
         this.hoverValue = target[this.value]
       }
