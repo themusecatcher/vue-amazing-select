@@ -94,29 +94,46 @@ export default {
       showOptions: false
     }
   },
-  created () {
-    if (this.selectedValue) {
-      if (this.labelInValue) {
-        this.hoverValue = this.selectedValue[this.value] || ''
-        this.selectedName = this.selectedValue[this.name] || ''
-      } else {
-        this.hoverValue = this.selectedValue || ''
-        const target = this.selectData.find(item => item[this.value] === this.selectedValue)
-        this.selectedName = target ? target[this.name] : null
-      }
-    }
-    if (!this.selectedValue && this.defaultValue) {
-      this.hoverValue = this.defaultValue
-      const target = this.selectData.find(item => item[this.value] === this.defaultValue)
-      this.selectedName = target ? target[this.name] : null
-      if (this.labelInValue) {
-        this.$emit('model', target)
-      } else {
-        this.$emit('model', target[this.value])
-      }
+  watch: {
+    selectData () {
+      this.initSelector()
+      console.log('selectData')
+    },
+    selectedValue () {
+      this.initSelector()
+      console.log('selectedValue')
+    },
+    defaultValue () {
+      this.initSelector()
+      console.log('defaultValue')
     }
   },
+  created () {
+    this.initSelector()
+  },
   methods: {
+    initSelector () {
+      if (this.selectedValue) {
+        if (this.labelInValue) {
+          this.hoverValue = this.selectedValue[this.value] || ''
+          this.selectedName = this.selectedValue[this.name] || ''
+        } else {
+          this.hoverValue = this.selectedValue || ''
+          const target = this.selectData.find(item => item[this.value] === this.selectedValue)
+          this.selectedName = target ? target[this.name] : null
+        }
+      }
+      if (!this.selectedValue && this.defaultValue) {
+        this.hoverValue = this.defaultValue
+        const target = this.selectData.find(item => item[this.value] === this.defaultValue)
+        this.selectedName = target ? target[this.name] : null
+        if (this.labelInValue) {
+          this.$emit('model', target)
+        } else {
+          this.$emit('model', target[this.value])
+        }
+      }
+    },
     onBlur () {
       if (this.showOptions) {
         this.showOptions = false
@@ -152,7 +169,7 @@ export default {
 <style lang="less" scoped>
 @themeColor: #1890ff; // 自定义主题色
 input:focus {
-	outline: none;
+  outline: none;
 }
 input, p {
   margin: 0;

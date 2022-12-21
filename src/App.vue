@@ -57,7 +57,7 @@ export default {
           value: 8
         }
       ],
-      defaultValue: '',
+      defaultValue: 2,
       selectedValue: 1
     }
   },
