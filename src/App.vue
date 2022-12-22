@@ -3,6 +3,7 @@
     <div class="m-area">
       <VueAmazingSelector
         :selectData="selectData"
+        :defaultValue="defaultValue"
         name="label"
         value="value"
         placeholder="请选择城市"
@@ -10,7 +11,6 @@
         :width="160"
         :height="36"
         :num="6"
-        :defaultValue="defaultValue"
         v-model="selectedValue"
         @change="onChange" />
     </div>
