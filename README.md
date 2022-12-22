@@ -24,7 +24,6 @@ Vue.use(VueAmazingSelector)
   :defaultValue="defaultValue"
   name="label"
   value="value"
-  :labelInValue="false"
   placeholder="请选择城市"
   :disabled="false"
   :width="160"
@@ -32,10 +31,6 @@ Vue.use(VueAmazingSelector)
   :num="6"
   v-model="selectedValue"
   @change="onChange" />
-————————————————
-版权声明：本文为CSDN博主「theMuseCatcher」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/Dandrose/article/details/117283592
-/>
 ```
 
 ## Props
@@ -51,7 +46,7 @@ disabled | 是否禁用下拉 | Boolean | false
 width | 下拉框的宽度 | Number | 200
 height | 下拉框的高度 | Number | 36
 num | 下拉面板最多能展示的下拉项数，超过后滚动显示 | Number | 6
-selectedValue | v-model）当前选中的下拉值 | /Number/String/Object | null
+selectedValue | （v-model）当前选中的下拉值 | /Number/String/Object | null
 
 ## Events
 

@@ -6,7 +6,6 @@
         :defaultValue="defaultValue"
         name="label"
         value="value"
-        :labelInValue="false"
         placeholder="请选择城市"
         :disabled="false"
         :width="160"

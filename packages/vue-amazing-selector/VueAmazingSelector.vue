@@ -58,10 +58,6 @@ export default {
       type: String,
       default: 'value'
     },
-    labelInValue: { // 是否要同时获取选中项的文本name和值value，默认只能拿到选中项的值value
-      type: Boolean,
-      default: false
-    },
     placeholder: { // 下拉框默认文字
       type: String,
       default: '请选择'
@@ -114,23 +110,23 @@ export default {
   methods: {
     initSelector () {
       if (this.selectedValue) {
-        if (this.labelInValue) {
-          this.hoverValue = this.selectedValue[this.value] || ''
-          this.selectedName = this.selectedValue[this.name] || ''
-        } else {
-          this.hoverValue = this.selectedValue || ''
-          const target = this.selectData.find(item => item[this.value] === this.selectedValue)
-          this.selectedName = target ? target[this.name] : null
-        }
-      }
-      if (!this.selectedValue && this.defaultValue) {
-        this.hoverValue = this.defaultValue
-        const target = this.selectData.find(item => item[this.value] === this.defaultValue)
+        this.hoverValue = this.selectedValue
+        const target = this.selectData.find(item => item[this.value] === this.selectedValue)
         this.selectedName = target ? target[this.name] : null
-        if (this.labelInValue) {
-          this.$emit('model', target)
+      } else {
+        if (this.selectedValue === '') {
+          this.hoverValue = ''
+          this.selectedName = ''
+        } else if (this.defaultValue) {
+          if (this.selectData.length) {
+            this.hoverValue = this.defaultValue
+            const target = this.selectData.find(item => item[this.value] === this.defaultValue)
+            this.selectedName = target ? target[this.name] : null
+            this.$emit('model', target[this.value])
+          }
         } else {
-          this.$emit('model', target[this.value])
+          this.hoverValue = null
+          this.selectedName = null
         }
       }
     },
@@ -153,15 +149,13 @@ export default {
       }
     },
     onChange (name, value, index) { // 选中下拉项后的回调
-      this.selectedName = name
-      this.hoverValue = value
-      this.showOptions = false
-      if (this.labelInValue) {
-        this.$emit('model', { [this.name]: name, [this.value]: value })
-      } else {
+      if (this.selectedName !== name) {
+        this.selectedName = name
+        this.hoverValue = value
+        this.showOptions = false
         this.$emit('model', value)
+        this.$emit('change', name, value, index)
       }
-      this.$emit('change', name, value, index)
     }
   }
 }
