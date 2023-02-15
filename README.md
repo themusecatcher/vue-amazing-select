@@ -12,7 +12,6 @@ npm install vue-amazing-selector
 ```
 import Vue from 'vue'
 import VueAmazingSelector from 'vue-amazing-selector'
-import 'vue-amazing-selector/lib/selector.css' // 引入样式
 Vue.use(VueAmazingSelector)
 ```
 
