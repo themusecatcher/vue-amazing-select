@@ -61,7 +61,7 @@ allowClear | 是否支持清除 | Boolean | false
 width | 选择框宽度 | Number | 200
 height | 选择框高度 | Number | 36
 num | 下拉面板最多能展示的下拉项数，超过后滚动显示 | Number | 6
-selectedValue | （v-model）当前选中的option条目 | Number|String | null
+selectedValue | （v-model）当前选中的option条目 | Number\|String | null
 
 ## Events
 
