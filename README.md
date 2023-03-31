@@ -50,21 +50,21 @@ export default {
 
 ## Props
 
-属性 | 说明 | 类型 | 默认值
-:--- | :--- | :--- | :---
-selectData | 下拉列表数据 | Array | []
-defaultValue | 下拉初始默认值，在未设置selectedValue（v-model）时生效 | String/Number | ''
-name | 下拉字典项的文本字段名 | String | name
-value | 下拉字典项的值字段名 | String | value
-placeholder | 下拉框默认文字 | String | 请选择
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+options | 选项数据 | Array | []
+label | 选择器字典项的文本字段名 | String | label
+value | 选择器字典项的值字段名 | String | value
+placeholder | 选择框默认文字 | String | 请选择
 disabled | 是否禁用下拉 | Boolean | false
-width | 下拉框的宽度 | Number | 200
-height | 下拉框的高度 | Number | 36
+allowClear | 是否支持清除 | Boolean | false
+width | 选择框宽度 | Number | 200
+height | 选择框高度 | Number | 36
 num | 下拉面板最多能展示的下拉项数，超过后滚动显示 | Number | 6
-selectedValue | （v-model）当前选中的下拉值 | /Number/String/Object | null
+selectedValue | （v-model）当前选中的option条目 | /Number/String | null
 
 ## Events
 
 事件名 | 说明 | 返回值
 :--- | :--- | :---
-change | 选择某项下拉后的回调函数 | name, value, index（name文本值，value值，索引值）
+change | 选择某项下拉后的回调函数 | value, label, index（value值，label文本值，index索引值）
