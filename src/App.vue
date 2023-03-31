@@ -2,15 +2,15 @@
   <div id="app">
     <div class="m-area">
       <VueAmazingSelector
-        :selectData="selectData"
-        :defaultValue="defaultValue"
-        name="label"
+        :options="options"
+        label="label"
         value="value"
         placeholder="请选择城市"
         :disabled="false"
         :width="160"
         :height="36"
         :num="6"
+        allowClear
         v-model="selectedValue"
         @change="onChange" />
     </div>
@@ -21,7 +21,7 @@ export default {
   name: 'App',
   data () {
     return {
-      selectData: [
+      options: [
         {
           label: '北京市',
           value: 1
@@ -56,7 +56,6 @@ export default {
           value: 8
         }
       ],
-      defaultValue: 2,
       selectedValue: 1
     }
   },
@@ -65,9 +64,14 @@ export default {
       console.log('selectedValue:', to)
     }
   },
+  mounted () {
+    setTimeout(() => { // 模拟接口调用
+      this.selectedValue = 3
+    }, 1000)
+  },
   methods: {
-    onChange (name, value, index) {
-      console.log('item:', name, value, index)
+    onChange (value, label, index) {
+      console.log('item:', value, label, index)
     }
   }
 }

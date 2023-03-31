@@ -1,35 +1,51 @@
 # vue-amazing-selector
 
-## 安装插件
+## An Amazing Select Component For Vue2
 
-```
+## Install & Use
+
+```sh
 npm install vue-amazing-selector
-或：yarn add vue-amazing-selector
+#or
+yarn add vue-amazing-selector
 ```
 
-## 引入并注册插件
+Import and register component
 
-```
+**Global**
+
+```js
 import Vue from 'vue'
 import VueAmazingSelector from 'vue-amazing-selector'
+
 Vue.use(VueAmazingSelector)
 ```
 
-## 基本用法示例
+**Local**
 
-```
-<VueAmazingSelector
-  :selectData="selectData"
-  :defaultValue="defaultValue"
-  name="label"
-  value="value"
-  placeholder="请选择城市"
-  :disabled="false"
-  :width="160"
-  :height="36"
-  :num="6"
-  v-model="selectedValue"
-  @change="onChange" />
+```vue
+<template>
+  <VueAmazingSelector
+    :options="options"
+    label="label"
+    value="value"
+    placeholder="请选择"
+    :disabled="false"
+    :width="160"
+    :height="36"
+    :num="6"
+    v-model="selectedValue"
+    @change="onChange" />
+</template>
+<script>
+import { VueAmazingSelector } from 'vue-amazing-selector'
+
+export default {
+  components: {
+    VueAmazingSelector
+  }
+}
+</script>
 ```
 
 ## Props
