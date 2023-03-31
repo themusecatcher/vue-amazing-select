@@ -297,8 +297,8 @@ P {
     background: #fafafa;
   }
   .option-hover { // 悬浮时的下拉项样式
-    // background: #e6f7ff;
-    background: saturate(fade(@themeColor, 12%), 30%);
+    background: #e6f7ff;
+    // background: saturate(fade(@themeColor, 12%), 30%);
   }
   .option-disabled { // 禁用某个下拉选项时的样式
     color: rgba(0,0,0,.25);
