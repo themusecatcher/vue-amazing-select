@@ -3,8 +3,17 @@
 node_modules
 packages/
 public/
+src/
 
 # 忽略指定文件
-vue.config.js
+.eslintrc.cjs
+.gitignore
+.npmignore
+.npmrc
 babel.config.js
+vue.config.js
+yarn.lock
 *.map
+
+
+
