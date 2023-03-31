@@ -189,7 +189,7 @@ P {
   transform: scaleY(1);
   transform-origin: 0% 0%;
   opacity: 1;
-  transition: all .3s;
+  transition: all .2s;
 }
 .fade-enter {
   transform: scaleY(0.8);
