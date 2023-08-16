@@ -2,6 +2,8 @@
 
 ## An Amazing Select Component For Vue2
 
+## [Vue3选择器（Select）](https://www.npmjs.com/package/vue-amazing-ui)
+
 ## Install & Use
 
 ```sh
